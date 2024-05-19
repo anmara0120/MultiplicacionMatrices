@@ -1,11 +1,21 @@
 package metodos;
 
-import java.io.FileWriter;
 import java.io.IOException;
 
-public class NaivLoopUnrollingFour {
-    public static double[][] NaivLoopUnrollingFour(double [][]A, double [][]B, double[][] Result, int N, int P, int M) throws IOException {
-        long startTime = System.nanoTime();
+public class NaivLoopUnrollingFour extends TiempoEjecucion {
+    @Override
+    public double[][] algoritmo(double[][] matriz) {
+        nombreMetodo = "NaivLoopUnrollingFour";
+        try {
+            return NaivLoopUnrollingFour(matriz);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public double[][] NaivLoopUnrollingFour(double [][]matriz) throws IOException {
+        int N , P, M;
+        N = P = M = matriz.length;
+        double[][] resultado = new double[N][N];
         int i, j, k;
         double aux;
         if (P % 4 == 0) {
@@ -13,10 +23,10 @@ public class NaivLoopUnrollingFour {
                 for (j = 0; j < M; j++) {
                     aux = 0.0;
                     for (k = 0; k < P; k += 4) {
-                        aux += A[i][k]*B[k][j] + A[i][k+1]*B[k+1][j] + A[i][k+2]*B[k+2][j]
-                                + A[i][k+3]*B[k+3][j];
+                        aux += matriz[i][k]*matriz[k][j] + matriz[i][k+1]*matriz[k+1][j] + matriz[i][k+2]*matriz[k+2][j]
+                                + matriz[i][k+3]*matriz[k+3][j];
                     }
-                    Result[i][j] = aux;
+                    resultado[i][j] = aux;
                 }
             }
         } else if (P % 4 == 1) {
@@ -25,10 +35,10 @@ public class NaivLoopUnrollingFour {
                 for (j = 0; j < M; j++) {
                     aux = 0.0;
                     for (k = 0; k < PP; k += 4) {
-                        aux += A[i][k]*B[k][j] + A[i][k+1]*B[k+1][j] + A[i][k+2]*B[k+2][j]
-                                + A[i][k+3]*B[k+3][j];
+                        aux += matriz[i][k]*matriz[k][j] + matriz[i][k+1]*matriz[k+1][j] + matriz[i][k+2]*matriz[k+2][j]
+                                + matriz[i][k+3]*matriz[k+3][j];
                     }
-                    Result[i][j] = aux + A[i][PP]*B[PP][j];
+                    resultado[i][j] = aux + matriz[i][PP]*matriz[PP][j];
                 }
             }
         } else if (P % 4 == 2) {
@@ -38,10 +48,10 @@ public class NaivLoopUnrollingFour {
                 for (j = 0; j < M; j++) {
                     aux = 0.0;
                     for (k = 0; k < PP; k += 4) {
-                        aux += A[i][k]*B[k][j] + A[i][k+1]*B[k+1][j] + A[i][k+2]*B[k+2][j]
-                                + A[i][k+3]*B[k+3][j];
+                        aux += matriz[i][k]*matriz[k][j] + matriz[i][k+1]*matriz[k+1][j] + matriz[i][k+2]*matriz[k+2][j]
+                                + matriz[i][k+3]*matriz[k+3][j];
                     }
-                    Result[i][j] = aux + A[i][PP]*B[PP][j] + A[i][PPP]*B[PPP][j];
+                    resultado[i][j] = aux + matriz[i][PP]*matriz[PP][j] + matriz[i][PPP]*matriz[PPP][j];
                 }
             }
         } else {
@@ -52,20 +62,15 @@ public class NaivLoopUnrollingFour {
                 for (j = 0; j < M; j++) {
                     aux = 0.0;
                     for (k = 0; k < PP; k += 4) {
-                        aux += A[i][k]*B[k][j] + A[i][k+1]*B[k+1][j] + A[i][k+2]*B[k+2][j]
-                                + A[i][k+3]*B[k+3][j];
+                        aux += matriz[i][k]*matriz[k][j] + matriz[i][k+1]*matriz[k+1][j] + matriz[i][k+2]*matriz[k+2][j]
+                                + matriz[i][k+3]*matriz[k+3][j];
                     }
-                    Result[i][j] = aux + A[i][PP]*B[PP][j] + A[i][PPP]*B[PPP][j]
-                            + A[i][PPPP]*B[PPPP][j];
+                    resultado[i][j] = aux + matriz[i][PP]*matriz[PP][j] + matriz[i][PPP]*matriz[PPP][j]
+                            + matriz[i][PPPP]*matriz[PPPP][j];
                 }
             }
         }
-        //Tiempo de ejecución del algoritmo
-        long endTime = System.nanoTime();
-        double executionTime = (endTime - startTime) / 1e9;
-        guardarTiempoEjecucion(executionTime, "TN.txt","metodos.NaivLoopUnrollingFour");
-        System.out.println("Tiempo de ejecución: " + executionTime + " segundos");
-        return Result;
+        return resultado;
     }
     double Abs(double a){
         if ( a < 0 ) {
@@ -97,12 +102,5 @@ public class NaivLoopUnrollingFour {
             Norm = Max(Norm, aux);
         }
         return Norm;
-    }
-
-    public static void guardarTiempoEjecucion(double time, String txt, String algoritmo) throws IOException {
-        FileWriter fileWriter = new FileWriter(txt, true);
-        fileWriter.write("T(n) de " + algoritmo + ": " + String.valueOf(time) + " segundos");
-        fileWriter.write("\n");
-        fileWriter.close();
     }
 }

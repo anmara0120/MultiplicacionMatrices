@@ -1,8 +1,16 @@
 package metodos;
 
-public class StrassenNaiv extends NaivStandar{
-    public void StrassenNaiv(double[][] matrizA, double[][] matrizB, double[][] matrizC, int N, int P, int M) {
+public class StrassenNaiv extends TiempoEjecucion{
+    @Override
+    public double[][] algoritmo(double [][] matriz) {
+        nombreMetodo = "StrassenNaiv";
+        return StrassenNaiv(matriz);
+    }
 
+    public double[][] StrassenNaiv(double[][] matriz) {
+        int N , P, M;
+        N = P = M = matriz.length;
+        double[][] resultado = new double[N][N];
         int MaxSize, k, m, NewSize, i, j;
         //MaxSize = max(N,P);
         MaxSize = max(N,P);
@@ -35,21 +43,22 @@ public class StrassenNaiv extends NaivStandar{
         }
         for (i = 0; i < N; i++) {
             for (j = 0; j < P; j++) {
-                NewA[i][j] = matrizA[i][j];
+                NewA[i][j] = matriz[i][j];
             }
         }
         for (i = 0; i < P; i++) {
             for (j = 0; j < M; j++) {
-                NewB[i][j] = matrizB[i][j];
+                NewB[i][j] = matriz[i][j];
             }
         }
         StrassenNaivStep(NewA, NewB, AuxResult, NewSize, m);
         // extract the result
         for (i = 0; i < N; i++) {
             for (j = 0; j < M; j++) {
-                matrizC[i][j] = AuxResult[i][j]; //Result
+                resultado[i][j] = AuxResult[i][j]; //Result
             }
         }
+        return resultado;
     }
 
     public int max (int N, int P){
@@ -277,6 +286,18 @@ public class StrassenNaiv extends NaivStandar{
         } else {
             // use naiv algorithm
             NaivStandard(A, B, Result, N, N, N);
+        }
+    }
+    public void NaivStandard(double[][] matrizA, double[][] matrizB, double[][] matrizC, int N, int P, int M){
+        double aux;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                aux = 0.0;
+                for (int k = 0; k < P; k++) {
+                    aux += matrizA[i][k] * matrizB[k][j];
+                }
+                matrizC[i][j] = aux;
+            }
         }
     }
 }
