@@ -10,8 +10,8 @@ public class Principal {
         do {
             double [][] matriz = leerMatriz(i + "x" + i + ".txt");
 
-            /*
-            NaivOnArray naivOnArray = new NaivOnArray();
+
+           /* NaivOnArray naivOnArray = new NaivOnArray();
             naivOnArray.ejecutar(matriz);
 
             NaivLoopUnrollingTwo naivLoopUnrollingTwo = new NaivLoopUnrollingTwo();
@@ -38,10 +38,24 @@ public class Principal {
             III3SequentialBlock iii3SequentialBlock  = new III3SequentialBlock();
             iii3SequentialBlock.ejecutar(matriz);
 
-             */
-
             StrassenNaiv strassenNaiv = new StrassenNaiv();
             strassenNaiv.ejecutar(matriz);
+
+            V4ParallelBlock v4ParallelBlock = new V4ParallelBlock();
+            v4ParallelBlock.ejecutar(matriz);
+
+
+            V3SequentialBlock V3SequentialBlock = new V3SequentialBlock();
+            V3SequentialBlock.ejecutar(matriz);
+
+            WinogradOriginal winogradOriginal = new WinogradOriginal();
+            winogradOriginal.ejecutar(matriz);
+
+            WinogradScaled winogradScaled = new WinogradScaled();
+            winogradScaled.ejecutar(matriz);*/
+
+            StrassenWinograd strassenWinograd = new StrassenWinograd();
+            strassenWinograd.ejecutar(matriz);
 
             caso++;
             i*=2;

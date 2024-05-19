@@ -1,63 +1,75 @@
 package metodos;
 
-public class WinogradOriginal {
-    public void WinogradOriginal(double[][] A, double[][] B, double[][] Result, int N, int P, int M) {
-        int i, j, k;
+import java.io.IOException;
+
+public class WinogradOriginal extends TiempoEjecucion {
+   //
+   @Override
+    public double[][] algoritmo(double[][] matriz) {
+        nombreMetodo = "WinogradOriginal";
+        try {
+            return WinogradOriginal(matriz);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public double[][] WinogradOriginal(double[][] matriz)throws IOException  {
+
+       int i, j, k, N, P,M;
+        N=P=M= matriz.length;
+        double[][] Result = new double[N][N];
         double aux;
         int upsilon = P % 2;
         int gamma = P - upsilon;
-        double[] y = new double[M];
-        double[] z = new double[N];
+        double[] y = new double[N];
+        double[] z = new double[M];
 
-        for (i = 0; i < M; i++) {
+        // Calcular vector y
+        for (i = 0; i < N; i++) {
             aux = 0.0;
             for (j = 0; j < gamma; j += 2) {
-                aux += A[i][j] * A[i][j+1];
+                aux += matriz[i][j] * matriz[i][j + 1];
             }
             y[i] = aux;
         }
 
-        for (i = 0; i < N; i++) {
+        // Calcular vector z
+        for (i = 0; i < M; i++) {
             aux = 0.0;
             for (j = 0; j < gamma; j += 2) {
-                aux += B[j][i] * B[j+1][i];
+                aux += matriz[j][i] * matriz[j + 1][i];
             }
             z[i] = aux;
         }
 
+        // Si P es impar
         if (upsilon == 1) {
-            /*
-             * P is odd
-             * The value A[i][P]*B[P][k] is missing in all auxiliary sums.
-             */
             int PP = P - 1;
-            for (i = 0; i < M; i++) {
-                for (k = 0; k < N; k++) {
+            for (i = 0; i < N; i++) {
+                for (k = 0; k < M; k++) {
                     aux = 0.0;
                     for (j = 0; j < gamma; j += 2) {
-                        aux += (A[i][j] + B[j+1][k]) * (A[i][j+1] + B[j][k]);
+                        aux += (matriz[i][j] + matriz[j + 1][k]) * (matriz[i][j + 1] + matriz[j][k]);
                     }
-                    Result[i][k] = aux - y[i] - z[k] + A[i][PP] * B[PP][k];
+                    Result[i][k] = aux - y[i] - z[k] + matriz[i][PP] * matriz[PP][k];
                 }
             }
         } else {
-            /*
-             * P is even
-             * The result can be computed with the auxiliary sums.
-             */
-            for (i = 0; i < M; i++) {
-                for (k = 0; k < N; k++) {
+            // Si P es par
+            for (i = 0; i < N; i++) {
+                for (k = 0; k < M; k++) {
                     aux = 0.0;
                     for (j = 0; j < gamma; j += 2) {
-                        aux += (A[i][j] + B[j+1][k]) * (A[i][j+1] + B[j][k]);
+                        aux += (matriz[i][j] + matriz[j + 1][k]) * (matriz[i][j + 1] + matriz[j][k]);
                     }
                     Result[i][k] = aux - y[i] - z[k];
                 }
             }
         }
-
-        // Liberar memoria
-        y = null;
-        z = null;
+        return Result;
     }
-}
+    }
+
+

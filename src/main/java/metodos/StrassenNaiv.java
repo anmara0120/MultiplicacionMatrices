@@ -256,33 +256,6 @@ public class StrassenNaiv extends TiempoEjecucion{
                 }
             }
 
-            // free helper variables
-            A11 = null;
-            A12 = null;
-            A21 = null;
-            A22 = null;
-
-            B11 = null;
-            B12 = null;
-            B21 = null;
-            B22 = null;
-
-            ResultPart11 = null;
-            ResultPart12 = null;
-            ResultPart21 = null;
-            ResultPart22 = null;
-
-            Helper1 = null;
-            Helper2 = null;
-
-            Aux1 = null;
-            Aux2 = null;
-            Aux3 = null;
-            Aux4 = null;
-            Aux5 = null;
-            Aux6 = null;
-            Aux7 = null;
-
         } else {
             // use naiv algorithm
             NaivStandard(A, B, Result, N, N, N);
