@@ -1,0 +1,12 @@
+-----------------------------------------------
+NaivOnArray [2x2] -> Tiempo: 11001 nanosegundos
+NaivOnArray [4x4] -> Tiempo: 55 milisegundos
+NaivOnArray [8x8] -> Tiempo: 49500 nanosegundos
+NaivOnArray [16x16] -> Tiempo: 240400 nanosegundos
+NaivOnArray [32x32] -> Tiempo: 2513400 nanosegundos
+NaivOnArray [64x64] -> Tiempo: 6919900 nanosegundos
+NaivOnArray [128x128] -> Tiempo: 6552000 nanosegundos
+NaivOnArray [256x256] -> Tiempo: 187761300 nanosegundos
+NaivOnArray [512x512] -> Tiempo: 1762138500 nanosegundos
+NaivOnArray [1024x1024] -> Tiempo: 14545665300 nanosegundos
+-----------------------------------------------
