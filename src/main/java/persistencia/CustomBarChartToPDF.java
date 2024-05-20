@@ -7,6 +7,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPositions;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -16,38 +18,51 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static persistencia.FicheroUtils.obtenerMap;
 
 public class CustomBarChartToPDF {
 
     public static void main(String[] args) {
         // Crear el conjunto de datos
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(1.0, "Category 1", "Bar 1");
-        dataset.addValue(4.0, "Category 1", "Bar 2");
-        dataset.addValue(3.0, "Category 1", "Bar 3");
-        dataset.addValue(5.0, "Category 1", "Bar 4");
-        dataset.addValue(5.0, "Category 2", "Bar 1");
-        dataset.addValue(7.0, "Category 2", "Bar 2");
-        dataset.addValue(6.0, "Category 2", "Bar 3");
-        dataset.addValue(8.0, "Category 2", "Bar 4");
+        DefaultCategoryDataset dataset;
+        List<JFreeChart> charts = new ArrayList<>();
 
-        // Crear el gráfico de barras 2D
-        JFreeChart barChart = ChartFactory.createBarChart(
-                "Gráfico de Barras",
-                "Categoría",
-                "Valor",
-                dataset
-        );
+        for (int i = 8; i <= 1024;) {
+            dataset = new DefaultCategoryDataset();
+            DefaultCategoryDataset finalDataset = dataset;
+            obtenerMap().get(i).forEach((nombre, tiempo) -> {
+                finalDataset.addValue((Number) tiempo, (Comparable) "Category 1", (Comparable) nombre);
+            });
 
-        // Personalizar el gráfico
-        CategoryPlot plot = (CategoryPlot) barChart.getPlot();
-        plot.setBackgroundPaint(Color.WHITE);  // Fondo blanco
+            // Crear el gráfico de barras 2D
+            JFreeChart barChart = ChartFactory.createBarChart(
+                    "Matriz [" + i + "x" + i + "]" ,
+                    "Categoría",
+                    "Tiempo milisegundos",
+                    dataset
+            );
 
-        // Crear el BarRenderer y asignar colores diferentes a cada barra
+            // Personalizar el gráfico
+            customizeChart(barChart);
+            charts.add(barChart);
+            i *= 2;
+        }
+
+        // Guardar el gráfico en un archivo PDF
+        saveChartAsPDF(charts, "CustomBarChart.pdf", 800, 600);
+    }
+
+    public static void customizeChart(JFreeChart chart) {
+        CategoryPlot plot = (CategoryPlot) chart.getPlot();
+        plot.setBackgroundPaint(Color.WHITE);
+
         BarRenderer renderer = new BarRenderer() {
             @Override
             public Paint getItemPaint(int row, int column) {
-                // Asignar colores diferentes a cada barra
                 Color[] colors = new Color[] {Color.BLUE, Color.RED, Color.GREEN, Color.ORANGE, Color.CYAN, Color.MAGENTA};
                 return colors[column % colors.length];
             }
@@ -55,20 +70,23 @@ public class CustomBarChartToPDF {
 
         plot.setRenderer(renderer);
 
-        // Guardar el gráfico en un archivo PDF
-        saveChartAsPDF(barChart, "CustomBarChart.pdf", 800, 600);
+        CategoryAxis domainAxis = plot.getDomainAxis();
+        domainAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45); // Rotar las etiquetas en 45 grados si es necesario
     }
 
-    public static void saveChartAsPDF(JFreeChart chart, String fileName, int width, int height) {
+    public static void saveChartAsPDF(List<JFreeChart> charts, String fileName, int width, int height) {
         Document document = new Document(PageSize.A4.rotate());
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileName));
             document.open();
-            BufferedImage bufferedImage = chart.createBufferedImage(width, height);
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ChartUtils.writeBufferedImageAsPNG(byteArrayOutputStream, bufferedImage);
-            com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(byteArrayOutputStream.toByteArray());
-            document.add(image);
+            for (JFreeChart chart : charts) {
+                BufferedImage bufferedImage = chart.createBufferedImage(width, height);
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                ChartUtils.writeBufferedImageAsPNG(byteArrayOutputStream, bufferedImage);
+                com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(byteArrayOutputStream.toByteArray());
+                document.add(image);
+                document.newPage(); // Agregar una nueva página para el siguiente gráfico
+            }
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         } finally {

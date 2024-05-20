@@ -4,9 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class FicheroUtils {
 
@@ -59,8 +57,8 @@ public class FicheroUtils {
             System.out.println(nombreAlgoritmo + " - " + fichero);
             List<String> lines = Files.lines(Paths.get("Tiempo_Ejecucion.txt"))
                     .map(linea -> {
-                        if (linea.contains(nombreAlgoritmo + " [" + fichero + "]")) {
-                            return nombreAlgoritmo + " [" + fichero + "] -> " + "Tiempo: " + executionTime + " nanosegundos";
+                        if (linea.contains(nombreAlgoritmo + " " + fichero)) {
+                            return nombreAlgoritmo + " " + fichero + " Tiempo: " + executionTime + " nanosegundos";
                         } else {
                             return linea;
                         }
@@ -73,6 +71,33 @@ public class FicheroUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static Map<Integer, Map<String, Double>> obtenerMap() {
+        Map<Integer, Map<String, Double>> mapa = new HashMap<>();
+        try {
+            Files.lines(Paths.get("Tiempo_Ejecucion.txt"))
+                .forEach(linea -> {
+                    if (linea.contains("--")){
+                        return;
+                    }
+                    String[] valores = linea.split("\\s");
+                    int i = Integer.parseInt(valores[1].split("x")[0]);
+                    String nombreAlgoritmo = valores[0];
+                    double tiempo = Double.parseDouble(valores[3])/1000000;
+                    if (mapa.get(i) != null) {
+                        mapa.get(i).put(nombreAlgoritmo, tiempo);
+                    }else {
+                        Map<String, Double> aux = new HashMap<>();
+                        aux.put(nombreAlgoritmo, tiempo);
+                        mapa.put(i, aux);
+                    }
+                });
+            System.out.println("Mapa generado correctamente");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return mapa;
     }
 }
 

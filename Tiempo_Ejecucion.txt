@@ -1,165 +1,135 @@
 -----------------------------------------------
-NaivOnArray [8x8] -> Tiempo: 45900 nanosegundos
-NaivOnArray [16x16] -> Tiempo: 276400 nanosegundos
-NaivOnArray [32x32] -> Tiempo: 1364100 nanosegundos
-NaivOnArray [64x64] -> Tiempo: 4081500 nanosegundos
-NaivOnArray [128x128] -> Tiempo: 4544200 nanosegundos
-NaivOnArray [256x256] -> Tiempo: 69784700 nanosegundos
-NaivOnArray [512x512] -> Tiempo: 844238500 nanosegundos
-NaivOnArray [1024x1024] -> Tiempo: 11894429600 nanosegundos
-
+NaivOnArray 8x8 Tiempo: 44500 nanosegundos
+NaivOnArray 16x16 Tiempo: 136800 nanosegundos
+NaivOnArray 32x32 Tiempo: 1462900 nanosegundos
+NaivOnArray 64x64 Tiempo: 5117200 nanosegundos
+NaivOnArray 128x128 Tiempo: 4639600 nanosegundos
+NaivOnArray 256x256 Tiempo: 43972300 nanosegundos
+NaivOnArray 512x512 Tiempo: 335001400 nanosegundos
+NaivOnArray 1024x1024 Tiempo: 4932300000 nanosegundos
 -----------------------------------------------
-
-NaivLoopUnrollingTwo [8x8] -> Tiempo: 31900 nanosegundos
-NaivLoopUnrollingTwo [16x16] -> Tiempo: 199000 nanosegundos
-NaivLoopUnrollingTwo [32x32] -> Tiempo: 1042900 nanosegundos
-NaivLoopUnrollingTwo [64x64] -> Tiempo: 3832900 nanosegundos
-NaivLoopUnrollingTwo [128x128] -> Tiempo: 8681400 nanosegundos
-NaivLoopUnrollingTwo [256x256] -> Tiempo: 35629900 nanosegundos
-NaivLoopUnrollingTwo [512x512] -> Tiempo: 307912000 nanosegundos
-NaivLoopUnrollingTwo [1024x1024] -> Tiempo: 9038108400 nanosegundos
-
+NaivLoopUnrollingTwo 8x8 Tiempo: 33500 nanosegundos
+NaivLoopUnrollingTwo 16x16 Tiempo: 149600 nanosegundos
+NaivLoopUnrollingTwo 32x32 Tiempo: 724900 nanosegundos
+NaivLoopUnrollingTwo 64x64 Tiempo: 4692600 nanosegundos
+NaivLoopUnrollingTwo 128x128 Tiempo: 7282300 nanosegundos
+NaivLoopUnrollingTwo 256x256 Tiempo: 29621000 nanosegundos
+NaivLoopUnrollingTwo 512x512 Tiempo: 200187200 nanosegundos
+NaivLoopUnrollingTwo 1024x1024 Tiempo: 3008613000 nanosegundos
 -----------------------------------------------
-
-NaivLoopUnrollingFour [8x8] -> Tiempo: 37500 nanosegundos
-NaivLoopUnrollingFour [16x16] -> Tiempo: 213300 nanosegundos
-NaivLoopUnrollingFour [32x32] -> Tiempo: 1412500 nanosegundos
-NaivLoopUnrollingFour [64x64] -> Tiempo: 8422300 nanosegundos
-NaivLoopUnrollingFour [128x128] -> Tiempo: 8449500 nanosegundos
-NaivLoopUnrollingFour [256x256] -> Tiempo: 33474500 nanosegundos
-NaivLoopUnrollingFour [512x512] -> Tiempo: 200245400 nanosegundos
-NaivLoopUnrollingFour [1024x1024] -> Tiempo: 11319532400 nanosegundos
-
+NaivLoopUnrollingFour 8x8 Tiempo: 25000 nanosegundos
+NaivLoopUnrollingFour 16x16 Tiempo: 100800 nanosegundos
+NaivLoopUnrollingFour 32x32 Tiempo: 933300 nanosegundos
+NaivLoopUnrollingFour 64x64 Tiempo: 12790000 nanosegundos
+NaivLoopUnrollingFour 128x128 Tiempo: 6598300 nanosegundos
+NaivLoopUnrollingFour 256x256 Tiempo: 32893600 nanosegundos
+NaivLoopUnrollingFour 512x512 Tiempo: 175368900 nanosegundos
+NaivLoopUnrollingFour 1024x1024 Tiempo: 3038699100 nanosegundos
 -----------------------------------------------
-
-IV5EnhancedParallelBlock [8x8] -> Tiempo: 5254900 nanosegundos
-IV5EnhancedParallelBlock [16x16] -> Tiempo: 400200 nanosegundos
-IV5EnhancedParallelBlock [32x32] -> Tiempo: 3171900 nanosegundos
-IV5EnhancedParallelBlock [64x64] -> Tiempo: 4212700 nanosegundos
-IV5EnhancedParallelBlock [128x128] -> Tiempo: 5399100 nanosegundos
-IV5EnhancedParallelBlock [256x256] -> Tiempo: 32558100 nanosegundos
-IV5EnhancedParallelBlock [512x512] -> Tiempo: 199099200 nanosegundos
-IV5EnhancedParallelBlock [1024x1024] -> Tiempo: 11819617600 nanosegundos
-
+IV5EnhancedParallelBlock 8x8 Tiempo: 4416700 nanosegundos
+IV5EnhancedParallelBlock 16x16 Tiempo: 284900 nanosegundos
+IV5EnhancedParallelBlock 32x32 Tiempo: 1666600 nanosegundos
+IV5EnhancedParallelBlock 64x64 Tiempo: 4596700 nanosegundos
+IV5EnhancedParallelBlock 128x128 Tiempo: 9833800 nanosegundos
+IV5EnhancedParallelBlock 256x256 Tiempo: 43752600 nanosegundos
+IV5EnhancedParallelBlock 512x512 Tiempo: 262698900 nanosegundos
+IV5EnhancedParallelBlock 1024x1024 Tiempo: 3323112000 nanosegundos
 -----------------------------------------------
-
-V4ParallelBlock [8x8] -> Tiempo: 6538100 nanosegundos
-V4ParallelBlock [16x16] -> Tiempo: 377800 nanosegundos
-V4ParallelBlock [32x32] -> Tiempo: 3364400 nanosegundos
-V4ParallelBlock [64x64] -> Tiempo: 3525000 nanosegundos
-V4ParallelBlock [128x128] -> Tiempo: 44837300 nanosegundos
-V4ParallelBlock [256x256] -> Tiempo: 23966100 nanosegundos
-V4ParallelBlock [512x512] -> Tiempo: 206684700 nanosegundos
-V4ParallelBlock [1024x1024] -> Tiempo: 1241270100 nanosegundos
-
+V4ParallelBlock 8x8 Tiempo: 793500 nanosegundos
+V4ParallelBlock 16x16 Tiempo: 314200 nanosegundos
+V4ParallelBlock 32x32 Tiempo: 2515700 nanosegundos
+V4ParallelBlock 64x64 Tiempo: 4292000 nanosegundos
+V4ParallelBlock 128x128 Tiempo: 38995400 nanosegundos
+V4ParallelBlock 256x256 Tiempo: 30283300 nanosegundos
+V4ParallelBlock 512x512 Tiempo: 116241800 nanosegundos
+V4ParallelBlock 1024x1024 Tiempo: 862967600 nanosegundos
 -----------------------------------------------
-
-V3SequentialBlock [8x8] -> Tiempo: 119300 nanosegundos
-V3SequentialBlock [16x16] -> Tiempo: 325900 nanosegundos
-V3SequentialBlock [32x32] -> Tiempo: 2533000 nanosegundos
-V3SequentialBlock [64x64] -> Tiempo: 3984500 nanosegundos
-V3SequentialBlock [128x128] -> Tiempo: 42770500 nanosegundos
-V3SequentialBlock [256x256] -> Tiempo: 25979200 nanosegundos
-V3SequentialBlock [512x512] -> Tiempo: 222031900 nanosegundos
-V3SequentialBlock [1024x1024] -> Tiempo: 1003067600 nanosegundos
-
+V3SequentialBlock 8x8 Tiempo: 62800 nanosegundos
+V3SequentialBlock 16x16 Tiempo: 193800 nanosegundos
+V3SequentialBlock 32x32 Tiempo: 1831500 nanosegundos
+V3SequentialBlock 64x64 Tiempo: 5656400 nanosegundos
+V3SequentialBlock 128x128 Tiempo: 38472800 nanosegundos
+V3SequentialBlock 256x256 Tiempo: 27200000 nanosegundos
+V3SequentialBlock 512x512 Tiempo: 132296000 nanosegundos
+V3SequentialBlock 1024x1024 Tiempo: 746016200 nanosegundos
 -----------------------------------------------
-
-III5EnhancedParallelBlock [8x8] -> Tiempo: 877900 nanosegundos
-III5EnhancedParallelBlock [16x16] -> Tiempo: 468800 nanosegundos
-III5EnhancedParallelBlock [32x32] -> Tiempo: 2418100 nanosegundos
-III5EnhancedParallelBlock [64x64] -> Tiempo: 4562500 nanosegundos
-III5EnhancedParallelBlock [128x128] -> Tiempo: 4320800 nanosegundos
-III5EnhancedParallelBlock [256x256] -> Tiempo: 23281200 nanosegundos
-III5EnhancedParallelBlock [512x512] -> Tiempo: 191478400 nanosegundos
-III5EnhancedParallelBlock [1024x1024] -> Tiempo: 11090958100 nanosegundos
+III5EnhancedParallelBlock 8x8 Tiempo: 651700 nanosegundos
+III5EnhancedParallelBlock 16x16 Tiempo: 289900 nanosegundos
+III5EnhancedParallelBlock 32x32 Tiempo: 1481300 nanosegundos
+III5EnhancedParallelBlock 64x64 Tiempo: 4368200 nanosegundos
+III5EnhancedParallelBlock 128x128 Tiempo: 5948900 nanosegundos
+III5EnhancedParallelBlock 256x256 Tiempo: 32832100 nanosegundos
+III5EnhancedParallelBlock 512x512 Tiempo: 255318500 nanosegundos
+III5EnhancedParallelBlock 1024x1024 Tiempo: 3247155200 nanosegundos
 -----------------------------------------------
-
-III4ParallelBlock [8x8] -> Tiempo: 736700 nanosegundos
-III4ParallelBlock [16x16] -> Tiempo: 500900 nanosegundos
-III4ParallelBlock [32x32] -> Tiempo: 3098600 nanosegundos
-III4ParallelBlock [64x64] -> Tiempo: 3448900 nanosegundos
-III4ParallelBlock [128x128] -> Tiempo: 64190300 nanosegundos
-III4ParallelBlock [256x256] -> Tiempo: 24071100 nanosegundos
-III4ParallelBlock [512x512] -> Tiempo: 176655600 nanosegundos
-III4ParallelBlock [1024x1024] -> Tiempo: 1199451500 nanosegundos
-
+III4ParallelBlock 8x8 Tiempo: 519400 nanosegundos
+III4ParallelBlock 16x16 Tiempo: 334300 nanosegundos
+III4ParallelBlock 32x32 Tiempo: 2023500 nanosegundos
+III4ParallelBlock 64x64 Tiempo: 4480200 nanosegundos
+III4ParallelBlock 128x128 Tiempo: 31938100 nanosegundos
+III4ParallelBlock 256x256 Tiempo: 21536300 nanosegundos
+III4ParallelBlock 512x512 Tiempo: 175014400 nanosegundos
+III4ParallelBlock 1024x1024 Tiempo: 1186915000 nanosegundos
 -----------------------------------------------
-
-III3SequentialBlock [8x8] -> Tiempo: 88200 nanosegundos
-III3SequentialBlock [16x16] -> Tiempo: 382000 nanosegundos
-III3SequentialBlock [32x32] -> Tiempo: 2849800 nanosegundos
-III3SequentialBlock [64x64] -> Tiempo: 3524900 nanosegundos
-III3SequentialBlock [128x128] -> Tiempo: 40965600 nanosegundos
-III3SequentialBlock [256x256] -> Tiempo: 24654700 nanosegundos
-III3SequentialBlock [512x512] -> Tiempo: 167370400 nanosegundos
-III3SequentialBlock [1024x1024] -> Tiempo: 1384506000 nanosegundos
-
+III3SequentialBlock 8x8 Tiempo: 62600 nanosegundos
+III3SequentialBlock 16x16 Tiempo: 233100 nanosegundos
+III3SequentialBlock 32x32 Tiempo: 1426400 nanosegundos
+III3SequentialBlock 64x64 Tiempo: 5705400 nanosegundos
+III3SequentialBlock 128x128 Tiempo: 36734400 nanosegundos
+III3SequentialBlock 256x256 Tiempo: 23420100 nanosegundos
+III3SequentialBlock 512x512 Tiempo: 157962800 nanosegundos
+III3SequentialBlock 1024x1024 Tiempo: 1144897300 nanosegundos
 -----------------------------------------------
-
-StrassenNaiv [8x8] -> Tiempo: 854200 nanosegundos
-StrassenNaiv [16x16] -> Tiempo: 313000 nanosegundos
-StrassenNaiv [32x32] -> Tiempo: 2296100 nanosegundos
-StrassenNaiv [64x64] -> Tiempo: 8215000 nanosegundos
-StrassenNaiv [128x128] -> Tiempo: 27741700 nanosegundos
-StrassenNaiv [256x256] -> Tiempo: 81798700 nanosegundos
-StrassenNaiv [512x512] -> Tiempo: 372403800 nanosegundos
-StrassenNaiv [1024x1024] -> Tiempo: 1760392300 nanosegundos
-
+StrassenNaiv 8x8 Tiempo: 430200 nanosegundos
+StrassenNaiv 16x16 Tiempo: 170300 nanosegundos
+StrassenNaiv 32x32 Tiempo: 1968600 nanosegundos
+StrassenNaiv 64x64 Tiempo: 11660000 nanosegundos
+StrassenNaiv 128x128 Tiempo: 38077600 nanosegundos
+StrassenNaiv 256x256 Tiempo: 76084600 nanosegundos
+StrassenNaiv 512x512 Tiempo: 334567000 nanosegundos
+StrassenNaiv 1024x1024 Tiempo: 1258501900 nanosegundos
 -----------------------------------------------
-
-V4ParallelBlock [8x8] -> Tiempo: 6538100 nanosegundos
-V4ParallelBlock [16x16] -> Tiempo: 377800 nanosegundos
-V4ParallelBlock [32x32] -> Tiempo: 3364400 nanosegundos
-V4ParallelBlock [64x64] -> Tiempo: 3525000 nanosegundos
-V4ParallelBlock [128x128] -> Tiempo: 44837300 nanosegundos
-V4ParallelBlock [256x256] -> Tiempo: 23966100 nanosegundos
-V4ParallelBlock [512x512] -> Tiempo: 206684700 nanosegundos
-V4ParallelBlock [1024x1024] -> Tiempo: 1241270100 nanosegundos
-
+V4ParallelBlock 8x8 Tiempo: 793500 nanosegundos
+V4ParallelBlock 16x16 Tiempo: 314200 nanosegundos
+V4ParallelBlock 32x32 Tiempo: 2515700 nanosegundos
+V4ParallelBlock 64x64 Tiempo: 4292000 nanosegundos
+V4ParallelBlock 128x128 Tiempo: 38995400 nanosegundos
+V4ParallelBlock 256x256 Tiempo: 30283300 nanosegundos
+V4ParallelBlock 512x512 Tiempo: 116241800 nanosegundos
+V4ParallelBlock 1024x1024 Tiempo: 862967600 nanosegundos
 -----------------------------------------------
-
-V3SequentialBlock [8x8] -> Tiempo: 119300 nanosegundos
-V3SequentialBlock [16x16] -> Tiempo: 325900 nanosegundos
-V3SequentialBlock [32x32] -> Tiempo: 2533000 nanosegundos
-V3SequentialBlock [64x64] -> Tiempo: 3984500 nanosegundos
-V3SequentialBlock [128x128] -> Tiempo: 42770500 nanosegundos
-V3SequentialBlock [256x256] -> Tiempo: 25979200 nanosegundos
-V3SequentialBlock [512x512] -> Tiempo: 206684700 nanosegundos
-V3SequentialBlock [1024x1024] -> Tiempo: 1003067600 nanosegundos
-
+V3SequentialBlock 8x8 Tiempo: 62800 nanosegundos
+V3SequentialBlock 16x16 Tiempo: 193800 nanosegundos
+V3SequentialBlock 32x32 Tiempo: 1831500 nanosegundos
+V3SequentialBlock 64x64 Tiempo: 5656400 nanosegundos
+V3SequentialBlock 128x128 Tiempo: 38472800 nanosegundos
+V3SequentialBlock 256x256 Tiempo: 27200000 nanosegundos
+V3SequentialBlock 512x512 Tiempo: 132296000 nanosegundos
+V3SequentialBlock 1024x1024 Tiempo: 746016200 nanosegundos
 -----------------------------------------------
-
-WinogradOriginal [8x8] -> Tiempo: 44700 nanosegundos
-WinogradOriginal [16x16] -> Tiempo: 383300 nanosegundos
-WinogradOriginal [32x32] -> Tiempo: 1288900 nanosegundos
-WinogradOriginal [64x64] -> Tiempo: 4538300 nanosegundos
-WinogradOriginal [128x128] -> Tiempo: 9258300 nanosegundos
-WinogradOriginal [256x256] -> Tiempo: 33243800 nanosegundos
-WinogradOriginal [512x512] -> Tiempo: 206684700 nanosegundos
-WinogradOriginal [1024x1024] -> Tiempo: 7625032900 nanosegundos
-
+WinogradOriginal 8x8 Tiempo: 29300 nanosegundos
+WinogradOriginal 16x16 Tiempo: 135400 nanosegundos
+WinogradOriginal 32x32 Tiempo: 1078700 nanosegundos
+WinogradOriginal 64x64 Tiempo: 5465600 nanosegundos
+WinogradOriginal 128x128 Tiempo: 11406300 nanosegundos
+WinogradOriginal 256x256 Tiempo: 31453000 nanosegundos
+WinogradOriginal 512x512 Tiempo: 221571700 nanosegundos
+WinogradOriginal 1024x1024 Tiempo: 3456471200 nanosegundos
 -----------------------------------------------
-
-StrassenWinograd [8x8] -> Tiempo: 1100900 nanosegundos
-StrassenWinograd [16x16] -> Tiempo: 3753400 nanosegundos
-StrassenWinograd [32x32] -> Tiempo: 38020300 nanosegundos
-StrassenWinograd [64x64] -> Tiempo: 131363100 nanosegundos
-StrassenWinograd [128x128] -> Tiempo: 755466800 nanosegundos
-StrassenWinograd [256x256] -> Tiempo: 4170967800 nanosegundos
-StrassenWinograd [512x512] -> Tiempo: 28576802100 nanosegundos
-StrassenWinograd [1024x1024] -> Tiempo: 205281571500 nanosegundos
-
+StrassenWinograd 8x8 Tiempo: 365600 nanosegundos
+StrassenWinograd 16x16 Tiempo: 3587900 nanosegundos
+StrassenWinograd 32x32 Tiempo: 20226700 nanosegundos
+StrassenWinograd 64x64 Tiempo: 98904200 nanosegundos
+StrassenWinograd 128x128 Tiempo: 528099900 nanosegundos
+StrassenWinograd 256x256 Tiempo: 3174118800 nanosegundos
+StrassenWinograd 512x512 Tiempo: 12263031200 nanosegundos
+StrassenWinograd 1024x1024 Tiempo: 84937944900 nanosegundos
 -----------------------------------------------
-
-WinogradScaled [8x8] -> Tiempo: 606400 nanosegundos
-WinogradScaled [16x16] -> Tiempo: 249300 nanosegundos
-WinogradScaled [32x32] -> Tiempo: 2025700 nanosegundos
-WinogradScaled [64x64] -> Tiempo: 5010100 nanosegundos
-WinogradScaled [128x128] -> Tiempo: 8291900 nanosegundos
-WinogradScaled [256x256] -> Tiempo: 33556000 nanosegundos
-WinogradScaled [512x512] -> Tiempo: 645258700 nanosegundos
-WinogradScaled [1024x1024] -> Tiempo: 8587672300 nanosegundos
-
-
-
+WinogradScaled 8x8 Tiempo: 52700 nanosegundos
+WinogradScaled 16x16 Tiempo: 363300 nanosegundos
+WinogradScaled 32x32 Tiempo: 1675300 nanosegundos
+WinogradScaled 64x64 Tiempo: 3532700 nanosegundos
+WinogradScaled 128x128 Tiempo: 8768600 nanosegundos
+WinogradScaled 256x256 Tiempo: 27447200 nanosegundos
+WinogradScaled 512x512 Tiempo: 192237500 nanosegundos
+WinogradScaled 1024x1024 Tiempo: 3712959100 nanosegundos

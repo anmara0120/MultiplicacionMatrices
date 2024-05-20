@@ -6,96 +6,90 @@ public class StrassenWinograd extends TiempoEjecucion {
     @Override
     public double[][] algoritmo(double[][] matriz) {
         nombreMetodo = "StrassenWinograd";
-            return strassenWinograd(matriz);
+            return multiply(matriz, matriz);
     }
 
-    private double[][] strassenWinograd(double[][] matriz) {
-        int n = matriz.length;
-        double[][] result = new double[n][n];
-        return strassenWinograd(matriz, matriz, result, n);
-    }
+    public static double[][] multiply(double[][] A, double[][] B) {
+        int n = A.length;
+        double[][] C = new double[n][n];
 
-    private double[][] strassenWinograd(double[][] A, double[][] B, double[][] C, int n) {
         if (n == 1) {
             C[0][0] = A[0][0] * B[0][0];
             return C;
         }
 
-        int newSize = n / 2;
-        double[][] A11 = new double[newSize][newSize];
-        double[][] A12 = new double[newSize][newSize];
-        double[][] A21 = new double[newSize][newSize];
-        double[][] A22 = new double[newSize][newSize];
-        double[][] B11 = new double[newSize][newSize];
-        double[][] B12 = new double[newSize][newSize];
-        double[][] B21 = new double[newSize][newSize];
-        double[][] B22 = new double[newSize][newSize];
+        double[][] A11 = new double[n/2][n/2];
+        double[][] A12 = new double[n/2][n/2];
+        double[][] A21 = new double[n/2][n/2];
+        double[][] A22 = new double[n/2][n/2];
 
-        splitMatrix(A, A11, 0, 0);
-        splitMatrix(A, A12, 0, newSize);
-        splitMatrix(A, A21, newSize, 0);
-        splitMatrix(A, A22, newSize, newSize);
-        splitMatrix(B, B11, 0, 0);
-        splitMatrix(B, B12, 0, newSize);
-        splitMatrix(B, B21, newSize, 0);
-        splitMatrix(B, B22, newSize, newSize);
+        double[][] B11 = new double[n/2][n/2];
+        double[][] B12 = new double[n/2][n/2];
+        double[][] B21 = new double[n/2][n/2];
+        double[][] B22 = new double[n/2][n/2];
 
-        double[][] M1 = strassenWinograd(addMatrices(A11, A22), addMatrices(B11, B22), new double[newSize][newSize], newSize);
-        double[][] M2 = strassenWinograd(addMatrices(A21, A22), B11, new double[newSize][newSize], newSize);
-        double[][] M3 = strassenWinograd(A11, subtractMatrices(B12, B22), new double[newSize][newSize], newSize);
-        double[][] M4 = strassenWinograd(A22, subtractMatrices(B21, B11), new double[newSize][newSize], newSize);
-        double[][] M5 = strassenWinograd(addMatrices(A11, A12), B22, new double[newSize][newSize], newSize);
-        double[][] M6 = strassenWinograd(subtractMatrices(A21, A11), addMatrices(B11, B12), new double[newSize][newSize], newSize);
-        double[][] M7 = strassenWinograd(subtractMatrices(A12, A22), addMatrices(B21, B22), new double[newSize][newSize], newSize);
+        // Dividir matrices A y B en sub-matrices
+        for (int i = 0; i < n/2; i++) {
+            for (int j = 0; j < n/2; j++) {
+                A11[i][j] = A[i][j];
+                A12[i][j] = A[i][j + n/2];
+                A21[i][j] = A[i + n/2][j];
+                A22[i][j] = A[i + n/2][j + n/2];
 
-        double[][] C11 = addMatrices(subtractMatrices(addMatrices(M1, M4), M5), M7);
-        double[][] C12 = addMatrices(M3, M5);
-        double[][] C21 = addMatrices(M2, M4);
-        double[][] C22 = addMatrices(subtractMatrices(addMatrices(M1, M3), M2), M6);
+                B11[i][j] = B[i][j];
+                B12[i][j] = B[i][j + n/2];
+                B21[i][j] = B[i + n/2][j];
+                B22[i][j] = B[i + n/2][j + n/2];
+            }
+        }
 
-        joinMatrices(C11, C, 0, 0);
-        joinMatrices(C12, C, 0, newSize);
-        joinMatrices(C21, C, newSize, 0);
-        joinMatrices(C22, C, newSize, newSize);
+        // Calcular productos parciales
+        double[][] M1 = multiply(add(A11, A22), add(B11, B22));
+        double[][] M2 = multiply(add(A21, A22), B11);
+        double[][] M3 = multiply(A11, subtract(B12, B22));
+        double[][] M4 = multiply(A22, subtract(B21, B11));
+        double[][] M5 = multiply(add(A11, A12), B22);
+        double[][] M6 = multiply(subtract(A21, A11), add(B11, B12));
+        double[][] M7 = multiply(subtract(A12, A22), add(B21, B22));
+
+        // Calcular productos finales
+        for (int i = 0; i < n/2; i++) {
+            for (int j = 0; j < n/2; j++) {
+                C[i][j] = M1[i][j] + M4[i][j] - M5[i][j] + M7[i][j];
+                C[i][j + n/2] = M3[i][j] + M5[i][j];
+                C[i + n/2][j] = M2[i][j] + M4[i][j];
+                C[i + n/2][j + n/2] = M1[i][j] - M2[i][j] + M3[i][j] + M6[i][j];
+            }
+        }
 
         return C;
     }
 
-    private double[][] addMatrices(double[][] A, double[][] B) {
+    private static double[][] add(double[][] A, double[][] B) {
         int n = A.length;
-        double[][] result = new double[n][n];
+        double[][] C = new double[n][n];
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                result[i][j] = A[i][j] + B[i][j];
+                C[i][j] = A[i][j] + B[i][j];
             }
         }
-        return result;
+
+        return C;
     }
 
-    private double[][] subtractMatrices(double[][] A, double[][] B) {
+    private static double[][] subtract(double[][] A, double[][] B) {
         int n = A.length;
-        double[][] result = new double[n][n];
+        double[][] C = new double[n][n];
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                result[i][j] = A[i][j] - B[i][j];
+                C[i][j] = A[i][j] - B[i][j];
             }
         }
-        return result;
+
+        return C;
     }
 
-    private void splitMatrix(double[][] parent, double[][] child, int rowOffset, int colOffset) {
-        for (int i = 0; i < child.length; i++) {
-            for (int j = 0; j < child.length; j++) {
-                child[i][j] = parent[i + rowOffset][j + colOffset];
-            }
-        }
-    }
 
-    private void joinMatrices(double[][] child, double[][] parent, int rowOffset, int colOffset) {
-        for (int i = 0; i < child.length; i++) {
-            for (int j = 0; j < child.length; j++) {
-                parent[i + rowOffset][j + colOffset] = child[i][j];
-            }
-        }
-    }
 }

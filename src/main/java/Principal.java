@@ -9,9 +9,9 @@ public class Principal {
         int i = 8;
         do {
             double [][] matriz = leerMatriz(i + "x" + i + ".txt");
+            /*
 
-
-           /* NaivOnArray naivOnArray = new NaivOnArray();
+            NaivOnArray naivOnArray = new NaivOnArray();
             naivOnArray.ejecutar(matriz);
 
             NaivLoopUnrollingTwo naivLoopUnrollingTwo = new NaivLoopUnrollingTwo();
@@ -52,7 +52,9 @@ public class Principal {
             winogradOriginal.ejecutar(matriz);
 
             WinogradScaled winogradScaled = new WinogradScaled();
-            winogradScaled.ejecutar(matriz);*/
+            winogradScaled.ejecutar(matriz);
+
+             */
 
             StrassenWinograd strassenWinograd = new StrassenWinograd();
             strassenWinograd.ejecutar(matriz);
